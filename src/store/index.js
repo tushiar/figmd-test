@@ -1,0 +1,2 @@
+export const ADD_STUDENT = "ADD_STUDENT"
+export const SEARCH_COURSE ="SEARCH_COURSE"
