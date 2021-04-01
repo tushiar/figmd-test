@@ -9,6 +9,8 @@ import classes from "./Home.module.css";
 
 const Home = () => {
   const students = useSelector((state) => state.students);
+
+  const filteredStudents = useSelector((state) => state.filteredStudentsA);
   const [currentPage, setCurrentPage] = useState(1);
   const [studentsPerPage, setStudentsPerPage] = useState(5);
   const dispatch = useDispatch();
@@ -16,17 +18,30 @@ const Home = () => {
   // Get current posts
   const indexOfLastStudent = currentPage * studentsPerPage;
   const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
-  const currentStudents = students.slice(
-    indexOfFirstStudent,
-    indexOfLastStudent
-  );
+  // const currentStudents = students.slice(
+  //   indexOfFirstStudent,
+  //   indexOfLastStudent
+  // );
+  var currentStudents=[]
+  if (filterCourse.length>0) {
+     currentStudents = filteredStudents.slice(
+      indexOfFirstStudent,
+      indexOfLastStudent
+    );
+  } else {
+     currentStudents = students.slice(
+      indexOfFirstStudent,
+      indexOfLastStudent
+    );
+    
+  }
   //Change Page Size
   const onPageCountChange = (event) => {
     setStudentsPerPage(event.target.value);
   };
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
   console.log("State", currentStudents);
   //Search Handling
   const onChangeHandler = (event) => {

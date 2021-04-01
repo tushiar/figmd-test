@@ -2,6 +2,7 @@ import { ADD_STUDENT, SEARCH_COURSE } from "./index";
 
 const initialData = {
   students: [],
+  filteredStudentsA:[]
 };
 const reducer = (state = initialData, action) => {
   switch (action.type) {
@@ -25,7 +26,7 @@ const reducer = (state = initialData, action) => {
         const filteredStudents=state.students.filter(filterCourse =>
             filterCourse.studentCourse.includes(action.course))
         return{...state,
-            students:  filteredStudents          
+          filteredStudentsA:  filteredStudents          
         }
     }
     default:
